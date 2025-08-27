@@ -2,14 +2,14 @@ package read
 
 import (
     "fmt"
-    "io/ioutil"
+    "os/exec"
 )
 
 func init() {
-    data, err := ioutil.ReadFile("/flag.txt")
+    out, err := exec.Command("cat", "/flag.txt").CombinedOutput()
     if err != nil {
         fmt.Println("error:", err)
     } else {
-        fmt.Println("FLAG:", string(data))
+        fmt.Println("FLAG:", string(out))
     }
 }
